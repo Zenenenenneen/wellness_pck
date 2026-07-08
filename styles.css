@@ -1,0 +1,228 @@
+:root {
+  color-scheme: light;
+  --bg: #f4efe6;
+  --bg-alt: #ebe1d3;
+  --panel: rgba(255, 251, 244, 0.78);
+  --panel-strong: rgba(255, 251, 244, 0.94);
+  --text: #1d1a17;
+  --muted: #655c52;
+  --line: rgba(29, 26, 23, 0.1);
+  --accent: #6a7b52;
+  --shadow: 0 24px 60px rgba(56, 42, 28, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(106, 123, 82, 0.18), transparent 32%),
+    radial-gradient(circle at top right, rgba(166, 137, 95, 0.16), transparent 28%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.1), transparent 80%);
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero,
+.footer-panel,
+.courses {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--panel);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  padding: 32px;
+  overflow: hidden;
+}
+
+.hero-copy {
+  width: 100%;
+  text-align: center;
+}
+
+
+.section-heading h2,
+.footer-panel h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.hero-copy h1 {
+  max-width: 11ch;
+  font-size: 3rem;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.hero-brand {
+  font-family:'Times New Roman', Times, serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1;  
+  text-align: center;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.intro,
+.course-meta p,
+.footer-panel p,
+.hero-highlights p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.intro {
+  max-width: 62ch;
+  margin-top: 18px;
+  font-size: 1.05rem;
+}
+
+.hero-highlights {
+  display: grid;
+  gap: 16px;
+  align-content: end;
+}
+
+.hero-highlights article {
+  padding: 18px 20px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero-highlights span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  background: var(--accent);
+  color: white;
+  font-weight: 800;
+}
+
+.courses {
+  margin-top: 22px;
+  padding: 28px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.course-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(29, 26, 23, 0.08);
+  background: var(--panel-strong);
+}
+
+.course-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  background: #faf6ef;
+  display: block;
+}
+
+.course-meta {
+  padding: 18px 18px 20px;
+}
+
+.course-meta h3 {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2rem;
+  line-height: 0.95;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .hero,
+  .courses {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .hero-copy h1 {
+    max-width: none;
+  }
+
+  .course-card {
+    min-height: 0;
+  }
+
+  .course-meta h3 {
+    font-size: 1.8rem;
+  }
+}
